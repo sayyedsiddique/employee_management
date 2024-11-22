@@ -1,0 +1,94 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Poppins", serif;
+    padding: 20px;
+}
+
+.employee_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.employee_header .add_employee_btn{
+    border: none;
+    border-radius: 120px;
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    background-color: rgb(221, 221, 221);
+}
+
+
+.employee_details_container{
+    display: flex;
+    border: 1px solid black;
+    width: 100%;
+    height: 550px;
+}
+
+.employee_details_container hr{
+    /* font-weight: 800;
+    border: 1px solid black; */
+}
+
+.employee_details_container .employee_list{
+    border-right: 1px solid black;
+    width: 30%;
+    height: 550px;
+    text-align: center;
+    padding: 5px;
+}
+
+.employee_details_container .employee_list h3, 
+.employee_details_container .employee_details h3{
+    padding-bottom: 5px;
+}
+
+.employee_details_container .employee_details{
+    width: 70%;
+    text-align: center;
+    padding: 5px;
+}
+
+.employees{
+    display: flex;
+    flex-direction: column;
+}
+
+.employees span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(235, 235, 235);
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.employees .selected{
+    background-color: rgb(172, 172, 172);
+}
+
+.employees img{
+    width: 25px;
+    cursor: pointer;
+}
+
+.single_employee img{
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+}
+
+/* .single_employee p{
+    padding-bottom: 5px;
+} */
