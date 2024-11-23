@@ -47,6 +47,7 @@ body {
   height: 550px;
   text-align: center;
   padding: 5px;
+  overflow-y: scroll;
 }
 
 .employee_details_container .employee_list h3,

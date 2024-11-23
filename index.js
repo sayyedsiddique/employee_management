@@ -1,113 +1,123 @@
 let exmployeesData = [
   {
     id: 1,
-    name: "Alice Johnson",
-    image:
+    firstName: "Alice",
+    lastName: "Johnson",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Software Engineer",
-    department: "IT",
-    age: 29,
-    city: "San Francisco",
     email: "alice.johnson@example.com",
+    contact: "123-456-7890",
+    salary: "100,000",
+    address: "San Francisco",
+    dob: "1994-03-15",
   },
   {
     id: 2,
-    name: "Bob Smith",
-    image:
+    firstName: "Bob",
+    lastName: "Smith",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Product Manager",
-    department: "Product",
-    age: 35,
-    city: "New York",
     email: "bob.smith@example.com",
+    contact: "987-654-3210",
+    salary: "120,000",
+    address: "New York",
+    dob: "1988-07-20",
   },
   {
     id: 3,
-    name: "Carol Williams",
-    image:
+    firstName: "Carol",
+    lastName: "Williams",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "UX Designer",
-    department: "Design",
-    age: 27,
-    city: "Chicago",
     email: "carol.williams@example.com",
+    contact: "456-789-0123",
+    salary: "90,000",
+    address: "Chicago",
+    dob: "1996-05-10",
   },
   {
     id: 4,
-    name: "David Brown",
-    image:
+    firstName: "David",
+    lastName: "Brown",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Data Scientist",
-    department: "Data",
-    age: 32,
-    city: "Austin",
     email: "david.brown@example.com",
+    contact: "321-654-9870",
+    salary: "110,000",
+    address: "Austin",
+    dob: "1991-11-25",
   },
   {
     id: 5,
-    name: "Emma Davis",
-    image:
+    firstName: "Emma",
+    lastName: "Davis",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Marketing Specialist",
-    department: "Marketing",
-    age: 26,
-    city: "Los Angeles",
     email: "emma.davis@example.com",
+    contact: "234-567-8901",
+    salary: "85,000",
+    address: "Los Angeles",
+    dob: "1998-02-18",
   },
   {
     id: 6,
-    name: "Frank Miller",
-    image:
+    firstName: "Frank",
+    lastName: "Miller",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Sales Manager",
-    department: "Sales",
-    age: 40,
-    city: "Boston",
     email: "frank.miller@example.com",
+    contact: "789-012-3456",
+    salary: "130,000",
+    address: "Boston",
+    dob: "1984-09-12",
   },
   {
     id: 7,
-    name: "Grace Wilson",
-    image:
+    firstName: "Grace",
+    lastName: "Wilson",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Human Resources",
-    department: "HR",
-    age: 30,
-    city: "Seattle",
     email: "grace.wilson@example.com",
+    contact: "345-678-9012",
+    salary: "95,000",
+    address: "Seattle",
+    dob: "1993-08-30",
   },
   {
     id: 8,
-    name: "Henry Moore",
-    image:
+    firstName: "Henry",
+    lastName: "Moore",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "DevOps Engineer",
-    department: "IT",
-    age: 28,
-    city: "Denver",
     email: "henry.moore@example.com",
+    contact: "567-890-1234",
+    salary: "105,000",
+    address: "Denver",
+    dob: "1995-06-22",
   },
   {
     id: 9,
-    name: "Ivy Taylor",
-    image:
+    firstName: "Ivy",
+    lastName: "Taylor",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Financial Analyst",
-    department: "Finance",
-    age: 33,
-    city: "Miami",
     email: "ivy.taylor@example.com",
+    contact: "678-901-2345",
+    salary: "115,000",
+    address: "Miami",
+    dob: "1990-01-14",
   },
   {
     id: 10,
-    name: "Jack Anderson",
-    image:
+    firstName: "Jack",
+    lastName: "Anderson",
+    imageUrl:
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
-    jobTitle: "Content Writer",
-    department: "Content",
-    age: 25,
-    city: "Philadelphia",
     email: "jack.anderson@example.com",
+    contact: "890-123-4567",
+    salary: "80,000",
+    address: "Philadelphia",
+    dob: "1999-04-08",
   },
 ];
 
@@ -121,6 +131,28 @@ const addEmployeeBoxElement = document.querySelector(
   ".add_employee_main_container"
 );
 const addEmployeeFormElement = document.querySelectorAll(".add_emp_input");
+const addEmployeeSubmitBtnElem = document.querySelector(".submit_btn");
+
+let employeeObj = {
+  firstName: "",
+  lastName: "",
+  imageUrl: "",
+  email: "",
+  contact: "",
+  salary: "",
+  address: "",
+  dob: "",
+};
+
+const stringTrimmerHandler = (value) => {
+
+  if(value.length > 5){
+    console.log("chlaa")
+    let trimmedStr = value.slice(0, 5)
+    console.log("trimmedStr ", trimmedStr + "...")
+    return trimmedStr + "..."
+  }
+}
 
 // Add employee button handler
 addEmployeeBtnElement.addEventListener("click", () => {
@@ -128,23 +160,33 @@ addEmployeeBtnElement.addEventListener("click", () => {
 
   // Add employee form functionality
   addEmployeeFormElement.forEach((elem) => {
-    // console.log("elem ", elem);
     elem.addEventListener("input", (e) => {
-      console.log("eeee", e.target.id)
-      let employeeObj = {
-        firstName: "",
-        lastName:
-          "",
-          imageUrl: "",
-          email: "",
-          contact: "",
-          salary: "",
-          address: "",
-          dob: "",
-      }
-    })
+      employeeObj[e.target.id] = e.target.value;
+      console.log("employeeObj ", employeeObj);
+    });
   });
 });
+
+// Submit handler funtionality
+addEmployeeSubmitBtnElem.addEventListener("click", () => {
+  let lastEmployee = exmployeesData[exmployeesData.length - 1];
+  employeeObj.id = lastEmployee.id
+  exmployeesData.push(employeeObj)
+  employeeObj = {
+    firstName: "",
+    lastName: "",
+    imageUrl: "",
+    email: "",
+    contact: "",
+    salary: "",
+    address: "",
+    dob: "",
+  }
+  console.log("exmployeesData ", exmployeesData);
+  addEmployeeBoxElement.classList.remove("active")
+  renderEmployees()
+});
+
 
 // close employee form
 addEmployeeBoxElement.addEventListener("click", (e) => {
@@ -190,18 +232,20 @@ const renderEmployees = () => {
     }
 
     employee.setAttribute("id", emp.id);
-    employee.innerHTML = `${emp.name} <i class="fa-solid fa-trash fa-xl" style="color: #c61022;"></i>`;
+    employee.innerHTML = `${(emp?.firstName + emp?.lastName).length > 5 ? stringTrimmerHandler(emp?.firstName + emp?.lastName) : (emp?.firstName + emp?.lastName)}<i class="fa-solid fa-trash fa-xl" style="color: #c61022;"></i>`;
     employeeList.append(employee);
   });
 
   // Render single employee on click
   const renderSingleEmployee = () => {
     employeeInfo.innerHTML = `
-    <img src="${seletedEmployee?.image}" />
-    <h1>${seletedEmployee?.name}</h1>
+    <img src="${seletedEmployee?.imageUrl ? seletedEmployee?.imageUrl : "./images/User-Profile.png"}" />
+    <h1>${(seletedEmployee?.firstName + " " + seletedEmployee?.lastName)}</h1>
     <p>Email: ${seletedEmployee?.email}</p>
-    <p>Job Title: ${seletedEmployee?.jobTitle}</p>
-    <p>Department: ${seletedEmployee?.department}</p>
+    <p>Contact: ${seletedEmployee?.contact}</p>
+    <p>Salary: ${seletedEmployee?.salary}</p>
+    <p>Address: ${seletedEmployee?.address}</p>
+    <p>DOB: ${seletedEmployee?.dob}</p>
     `;
   };
 
@@ -209,3 +253,4 @@ const renderEmployees = () => {
 };
 
 renderEmployees();
+
