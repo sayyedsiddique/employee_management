@@ -25,6 +25,10 @@ body {
   background-color: rgb(221, 221, 221);
 }
 
+.add_employee_btn:active{
+    background-color: #888888;
+}
+
 .employee_details_container {
   display: flex;
   border: 1px solid black;
@@ -146,4 +150,12 @@ body {
 
 .submit_btn:active{
     background-color: #888888;
+}
+
+.add_employee_main_container{
+    display: none;
+}
+
+.add_employee_main_container.active{
+    display: block;
 }

@@ -116,6 +116,40 @@ let seletedEmployee = exmployeesData[0];
 
 const employeeList = document.querySelector(".employees");
 const employeeInfo = document.querySelector(".single_employee");
+const addEmployeeBtnElement = document.querySelector(".add_employee_btn");
+const addEmployeeBoxElement = document.querySelector(
+  ".add_employee_main_container"
+);
+const addEmployeeFormElement = document.querySelectorAll(".add_emp_input");
+
+// Add employee button handler
+addEmployeeBtnElement.addEventListener("click", () => {
+  addEmployeeBoxElement.classList.add("active");
+
+  // Add employee form functionality
+  addEmployeeFormElement.forEach((elem) => {
+    // console.log("elem ", elem);
+    elem.addEventListener("input", (e) => {
+      console.log("eeee", e.target.id)
+      let employeeObj = {
+        firstName: "",
+        lastName:
+          "",
+          imageUrl: "",
+          email: "",
+          contact: "",
+          salary: "",
+          address: "",
+          dob: "",
+      }
+    })
+  });
+});
+
+// close employee form
+addEmployeeBoxElement.addEventListener("click", (e) => {
+  e.target.classList.remove("active");
+});
 
 // Select employee
 employeeList.addEventListener("click", (emp) => {
