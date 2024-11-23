@@ -132,7 +132,6 @@ employeeList.addEventListener("click", (emp) => {
     let filteredEmployees = exmployeesData.filter((item) => {
       if (String(item.id) !== emp.target.parentNode.id) {
         if (emp.target.parentNode.className === "selected") {
-          emp.target.parentNode.nextSibling.classList.add("selected");
           seletedEmployeeId = emp.target.parentNode.nextSibling.id;
         }
         return item;
