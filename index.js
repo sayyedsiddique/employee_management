@@ -2,7 +2,8 @@ let exmployeesData = [
   {
     id: 1,
     name: "Alice Johnson",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Software Engineer",
     department: "IT",
     age: 29,
@@ -12,7 +13,8 @@ let exmployeesData = [
   {
     id: 2,
     name: "Bob Smith",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Product Manager",
     department: "Product",
     age: 35,
@@ -22,7 +24,8 @@ let exmployeesData = [
   {
     id: 3,
     name: "Carol Williams",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "UX Designer",
     department: "Design",
     age: 27,
@@ -32,7 +35,8 @@ let exmployeesData = [
   {
     id: 4,
     name: "David Brown",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Data Scientist",
     department: "Data",
     age: 32,
@@ -42,7 +46,8 @@ let exmployeesData = [
   {
     id: 5,
     name: "Emma Davis",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Marketing Specialist",
     department: "Marketing",
     age: 26,
@@ -52,7 +57,8 @@ let exmployeesData = [
   {
     id: 6,
     name: "Frank Miller",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Sales Manager",
     department: "Sales",
     age: 40,
@@ -62,7 +68,8 @@ let exmployeesData = [
   {
     id: 7,
     name: "Grace Wilson",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Human Resources",
     department: "HR",
     age: 30,
@@ -72,7 +79,8 @@ let exmployeesData = [
   {
     id: 8,
     name: "Henry Moore",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "DevOps Engineer",
     department: "IT",
     age: 28,
@@ -82,7 +90,8 @@ let exmployeesData = [
   {
     id: 9,
     name: "Ivy Taylor",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Financial Analyst",
     department: "Finance",
     age: 33,
@@ -92,7 +101,8 @@ let exmployeesData = [
   {
     id: 10,
     name: "Jack Anderson",
-    image: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Placeholder_Person.jpg",
     jobTitle: "Content Writer",
     department: "Content",
     age: 25,
@@ -105,29 +115,33 @@ let seletedEmployeeId = exmployeesData[0].id;
 let seletedEmployee = exmployeesData[0];
 
 const employeeList = document.querySelector(".employees");
-const employeeInfo = document.querySelector(".single_employee")
+const employeeInfo = document.querySelector(".single_employee");
 
 // Select employee
 employeeList.addEventListener("click", (emp) => {
- 
-  if(emp.target.tagName === "SPAN" && parseInt(seletedEmployeeId) !== parseInt(emp.target.id)){
-    seletedEmployeeId = emp.target.id
-    renderEmployees()
+  if (
+    emp.target.tagName === "SPAN" &&
+    parseInt(seletedEmployeeId) !== parseInt(emp.target.id)
+  ) {
+    seletedEmployeeId = emp.target.id;
+    renderEmployees();
   }
 
-
-  if(emp.target.tagName === "I"){
-    console.log("CLICK!!!", emp.target.parentNode)
-    let filteredEmployees = exmployeesData.filter((item) => String(item.id) !== emp.target.parentNode.id)
-    exmployeesData = filteredEmployees
-    console.log("filteredEmployees ", exmployeesData)
-    renderEmployees()
+  // Delete Functionality
+  if (emp.target.tagName === "I") {
+    let filteredEmployees = exmployeesData.filter((item) => {
+      if (String(item.id) !== emp.target.parentNode.id) {
+        if (emp.target.parentNode.className === "selected") {
+          emp.target.parentNode.nextSibling.classList.add("selected");
+          seletedEmployeeId = emp.target.parentNode.nextSibling.id;
+        }
+        return item;
+      }
+    });
+    exmployeesData = filteredEmployees;
+    renderEmployees();
   }
-
-})
-
-
-
+});
 
 // Rendering employee list
 const renderEmployees = () => {
@@ -149,18 +163,16 @@ const renderEmployees = () => {
 
   // Render single employee on click
   const renderSingleEmployee = () => {
-    
     employeeInfo.innerHTML = `
     <img src="${seletedEmployee?.image}" />
     <h1>${seletedEmployee?.name}</h1>
     <p>Email: ${seletedEmployee?.email}</p>
     <p>Job Title: ${seletedEmployee?.jobTitle}</p>
     <p>Department: ${seletedEmployee?.department}</p>
-    `
-  }
+    `;
+  };
 
-  renderSingleEmployee()
+  renderSingleEmployee();
 };
 
-renderEmployees()
-
+renderEmployees();
