@@ -147,7 +147,7 @@ let employeeObj = {
 const stringTrimmerHandler = (value) => {
 
   if(value.length > 5){
-    console.log("chlaa")
+    console.log("chlaa", value)
     let trimmedStr = value.slice(0, 5)
     console.log("trimmedStr ", trimmedStr + "...")
     return trimmedStr + "..."
@@ -232,7 +232,7 @@ const renderEmployees = () => {
     }
 
     employee.setAttribute("id", emp.id);
-    employee.innerHTML = `${(emp?.firstName + emp?.lastName).length > 5 ? stringTrimmerHandler(emp?.firstName + emp?.lastName) : (emp?.firstName + emp?.lastName)}<i class="fa-solid fa-trash fa-xl" style="color: #c61022;"></i>`;
+    employee.innerHTML = `${(emp?.firstName + emp?.lastName).length > 5 ? stringTrimmerHandler(`${emp?.firstName + " " + emp?.lastName}`) : (emp?.firstName + " " + emp?.lastName)}<i class="fa-solid fa-trash fa-xl" style="color: #c61022;"></i>`;
     employeeList.append(employee);
   });
 
